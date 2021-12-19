@@ -5,8 +5,8 @@ const cors=require('cors');
 const knex=require('knex');
 const register=require('./controllers/register');
 const signin=require('./controllers/signin');
-const profileGet=require('./controllers/profile');
-const image=require('./controllers/image');
+const profileGet=require('./controllers/profile')
+const image=require('./controllers/image')
 
 const db=knex({
   client: 'pg',
