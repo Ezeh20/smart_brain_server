@@ -6,6 +6,10 @@
   "scripts": {
     "start": "nodemon server.js"
   },
+  "scripts": {
+    "start": "node fileName.js",
+    "start:dev": "nodemon fileName.js"
+},  
   "keywords": [],
   "author": "",
   "license": "ISC",
