@@ -28,7 +28,7 @@ app.post('/register', (req,res)=>{register.handleRegister(req, res, db, bcrypt)}
 app.get('/profile/:id', (req,res)=>{profileGet.handleProfileGet(req, res, db)})
 app.put('/image', (req,res)=>{image.handleImage(req, res, db)})
 app.listen(process.env.PORT || 3001,()=>{
-  console.log(`app is running in port ${process.env.PORT}`)
+  console.log(`app is running in port zazuu ${process.env.PORT}`)
 })
 
 /*end points we need for the face-detection  front end

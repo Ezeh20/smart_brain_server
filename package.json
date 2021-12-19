@@ -4,6 +4,9 @@
   "description": "",
   "main": "node.js",
   "keywords": [],
+  "scripts":{
+    "start": "nodemon server.js"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
