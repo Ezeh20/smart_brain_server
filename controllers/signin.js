@@ -12,10 +12,10 @@ const handleSignin=(req,res,db,bcrypt)=>{
 			})
 			
 		}else{
-			res.status(400).json('wrong details')
+			res.status(400).json('wrong detail')
 		}
 	})
-	.catch(err=>res.status(400).json('wrong details'))
+	.catch(err=>res.status(400).json('wrong detail'))
 }
 
 module.exports={
