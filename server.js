@@ -10,14 +10,18 @@ const image=require('./controllers/image')
 
 const db=knex({
   client: 'pg',
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
+  connection: {
+    host : '127.0.0.1',
+    user : 'postgres',
+    password : 'Mmakam1997',
+    database : 'smart_brain'
+  }
 });
 const app=express();
 app.use(bodyparser.json())
 app.use(cors())
 app.get('/', (req,res)=>{
-	res.send("it is working")
+	res.send("it is workin")
 })
 app.post('/signin', (req,res)=>{signin.handleSignin(req,res,db,bcrypt)})
 app.post('/register', (req,res)=>{register.handleRegister(req, res, db, bcrypt)})
