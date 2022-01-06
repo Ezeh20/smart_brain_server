@@ -4,9 +4,7 @@
   "description": "",
   "main": "node.js",
   "keywords": [],
-  "scripts":{
-    
-  },
+  "scripts": {},
   "author": "",
   "license": "ISC",
   "dependencies": {
