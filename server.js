@@ -11,7 +11,7 @@ const image=require('./controllers/image')
 const db=knex({
   client: 'pg',
   connection: {
-     connectionString: "heroku pg:psql postgresql-round-71776 --app sleepy-dusk-13865"
+     connectionString: process.env.DATABASE_URL
   },
   ssl: {
     rejectUnauthorized: false
