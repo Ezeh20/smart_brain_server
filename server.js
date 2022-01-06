@@ -11,7 +11,7 @@ const image=require('./controllers/image')
 const db=knex({
   client: 'pg',
   connection: {
-     connectionString:postgres://veauardkpvqpzw:177570c9728709f064a82a3f481ee35b4e0f367141d5b798ef90b60d3eea0641@ec2-44-193-228-249.compute-1.amazonaws.com:5432/d28fg11sbng21p
+     connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false,
   },
