@@ -8,14 +8,25 @@ const signin=require('./controllers/signin');
 const profileGet=require('./controllers/profile')
 const image=require('./controllers/image')
 
-const parse = require('pg-connection-string').parse;
-const pgconfig = parse('postgres://veauardkpvqpzw:177570c9728709f064a82a3f481ee35b4e0f367141d5b798ef90b60d3eea0641@ec2-44-193-228-249.compute-1.amazonaws.com:5432/d28fg11sbng21p');
-pgconfig.ssl = { rejectUnauthorized: false };
+const connectionString = 'postgres://veauardkpvqpzw:177570c9728709f064a82a3f481ee35b4e0f367141d5b798ef90b60d3eea0641@ec2-44-193-228-249.compute-1.amazonaws.com:5432/d28fg11sbng21p';
 
-const db=knex({
-  client: 'pg',
-  connection: pgconfig
+const { Client } = require('pg');
+
+const client = new Client({
+  connectionString: connectionString,
+  ssl: { rejectUnauthorized: false }
 });
+
+client.connect();
+
+client.query('SELECT * FROM users;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
+
 
 const app=express();
 app.use(bodyparser.json())
