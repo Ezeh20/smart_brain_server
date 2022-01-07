@@ -7,26 +7,15 @@ const register=require('./controllers/register');
 const signin=require('./controllers/signin');
 const profileGet=require('./controllers/profile')
 const image=require('./controllers/image')
-
-const connectionString = 'postgres://veauardkpvqpzw:177570c9728709f064a82a3f481ee35b4e0f367141d5b798ef90b60d3eea0641@ec2-44-193-228-249.compute-1.amazonaws.com:5432/d28fg11sbng21p';
-
-const { Client } = require('pg');
-
-const client = new Client({
-  connectionString: connectionString,
-  ssl: { rejectUnauthorized: false }
+const db=knex({
+  client: 'pg',
+  connection: {
+     connectionString:process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  },
+},
 });
-
-client.connect();
-
-client.query('SELECT * FROM users;', (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row));
-  }
-  client.end();
-});
-
 
 const app=express();
 app.use(bodyparser.json())
@@ -47,4 +36,6 @@ app.listen(process.env.PORT || 3001,()=>{
 /register POST --> new user
 /profile/:user id GET -->user
 /image PUT --> this path records the amount of time the user detects a face in an image and also shouws his/her rank
+
+NODE_TLS_REJECT_UNAUTHORIZED=0
 */
